@@ -92,6 +92,7 @@ header button:active {
     flex-shrink: 0;
     width: 85px;
     margin: 5px;
+    cursor: pointer;
 }
 
 .fav-meals li .clear {
@@ -205,20 +206,23 @@ header button:active {
 }
 
 .popup-info {
+    position: relative;
     background-color: #fff;
     max-width: 600px;
+    max-height: 100vh;
     width: 100%;
     padding: 0 2rem;
     border-radius: 5px;
+    overflow: auto;
 }
 
 .popup-info .close-popup {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font: 1.5rem;
+    font-size: 1.5rem;
     position: absolute;
-    top: 1rem;
+    top: 0.7rem;
     right: 1rem;
 }
 

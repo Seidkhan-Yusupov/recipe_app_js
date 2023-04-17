@@ -144,12 +144,34 @@ function addMealFav(mealData) {
         fetchFavMeals();
     });
 
+    // meal.addEventListener("click", () => {
+    //     showMealInfo(mealData);
+    // });
+
     favoriteContainer.appendChild(favMeal);
 }
 
 function showMealInfo(mealData) {
+    // clean in up
+    mealInfoEl.innerHTML = "";
+
     // update the Meal info
     const mealEl = document.createElement("div");
+
+    const ingredients = [];
+
+    // GET INGREDIENTS AND MEASURES
+    for (let i = 1; i < 20; i++) {
+        if (mealData["strIngredient" + i]) {
+            ingredients.push(
+                `${mealData["strIngredient" + i]} - ${
+                    mealData["strMeasure" + i]
+                }`
+            );
+        } else {
+            break;
+        }
+    }
 
     mealEl.innerHTML = `
         <h1>${mealData.strMeal}</h1>
@@ -158,6 +180,10 @@ function showMealInfo(mealData) {
             alt="${mealData.strMeal}"
         />
         <p>${mealData.strInstructions}</p>
+        <h3>Ingredients:</h3>
+        <ul>
+            ${ingredients.map((ing) => `<li>${ing}</li>`).join("")}
+        </ul>
         `;
 
     mealInfoEl.appendChild(mealEl);
